@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>NYC Noise study-Home</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/chart1.css">
+		<link rel="stylesheet" href="assets/css/chart2.css">
+		<link rel="stylesheet" href="assets/css/chart3.css">
+		<link rel="stylesheet" href="assets/css/chart4.css">
+		<link rel="stylesheet" href="assets/css/chart5.css">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript
+		
+		
+		<!-- ********* code for map *********-->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+		<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+		<script src="./assets/js/map2.js"></script>
+
+		<link rel="stylesheet" href="./assets/css/map2.css" />
+		<link
+		href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
+		rel="stylesheet"
+		/>
+
+
+	</head>
+	
+	<body class="landing is-preload">
+		
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h2 style="display: inline-block;font-size: 15px; text-indent:50px">
+							<a  href="#banner">Home</a>
+						</h2>
+						<h2 style="display: inline-block;font-size: 15px"></h2>
+						<h2 style="display: inline-block;font-size: 15px">
+							<a  href="#time">Part 1</a>
+						</h2>
+						<h2 style="display: inline-block;font-size: 15px"> | 
+						</h2>
+						<h2 style="display: inline-block;font-size: 15px">
+							<a  href="#difference">Part 2</a>
+						</h2>
+						<h2 style="display: inline-block;font-size: 15px"> | 
+						</h2>
+						<h2 style="display: inline-block;font-size: 15px">
+							<a  href="#Advanced">Part 3</a>
+						</h2>
+					</header>
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<p style="font-size: 30px;line-height: 1.5em;">
+								An analysis of<br />
+							</p>
+							<p style="font-size: 60px;line-height: 1.5em;font-weight:bold;">
+								noise complaints<br />
+								in New York City<br />
+							</p>
+						</div>
+						<a href="#introduction" class="more scrolly">Learn More</a>
+					</section>
+
+				<!-- INTRODUCTION -->
+					<section id="introduction" class="wrapper style1 special" style="margin-bottom: 0px;padding-bottom: 0px;">
+						<h2 style="font-size: 30px;letter-spacing:3px">Introduction</h2>
+						<div class="inner" style="width:800px;">
+							<div class="content">
+							<header class="major">
+								<p style="color:white; height:300px;margin:0 auto;font-size: 16px;line-height:25px;letter-spacing:0.5px;text-align: justify">
+									<br />
+									<br />
+									Noise pollution is one of the most important concerns of New York City residents. Under New York's noise regulations, any noise that is 10 decibels (dBs) above background levels is considered a 'noise event' and can be investigated by the Department of Environmental Protection (DEP). A study in 2014 found that 90% of New Yorkers were exposed to noise above the US Environmental Protection Agency's recommended limits. <br />
+									<br />		
+									<i>Where New York's noise complaints come from? What factors can impact on the number of noise complaints?</i> To answer these questions, we decide to investigate noise complaints in NYC over the recent years (from 2019 to 2021). By using open data, <i>311 Service Request in NYC</i>, we conduct statistical and spatial analysis, and provide suggestions for the governance of noises.
+								</p>
+							</header>
+						</div>
+						<div class='dividing_line'></div>
+					</section>
+
+				<!-- PART 1 : CHANGE OVER TIME -->
+					<section id="time" class="wrapper style1 special" style="padding-top: 80px;">
+						<h2 style="font-size: 30px;letter-spacing:3px;width:800px;margin:0 auto">
+							Part 1 : Change over time</h2>
+						<!-- chart1-->
+						<div class="image" style="width:800px; height:400px;margin:0 auto;margin-top: 40px;">
+							<div class="image1" id="chart1" style="width:100%; height:100%;"></div>
+						</div>
+						
+						<div class="inner" style="margin-top: 40px;">
+							<div class="content">
+							<header class="major" >
+								<!-- chart1 word-->
+								<p style="color:white; width:800px; height:50px;margin:0 auto;font-size: 16px;line-height:25px;letter-spacing:0.5px;text-align: justify">
+									Driven by curiosity, we started the exploration by looking at how noise complaints changed over time. The number of noise complaints in 2020 and 2021 is higher than that in 2019.<br />
+									<br />
+									Another interesting thing about it is that people tend to make more noise in summer than any other seasons. The top point of this figure is 54,290 complaints to the police which happens on June 2020.<br />
+								</p>
+							</header>
+						</div>
+					</section>
+
+					<!-- THE MONTHLY CHANGE IN ALL DISTRICTS -->
+					<section id="interactivemap" style="background-color:#111111 ;width: auto;">
+						<h2 style="text-align:center;font-size: 20px;letter-spacing:3px;">The monthly change in all districts</h2>
+						<div id= "mapwrap" style="width:1200px;height:800px;padding-top:10px;display:block;margin: 0 auto;">
+							
+							<div id="map">
+								
+								
+								<div id="date-slider">
+									<el-slider
+									v-model="value2"
+									:format-tooltip="tooltipFormatted"
+									@change="selfChange"
+									:max="max"
+									:min="0"
+									height=100%
+									>
+									</el-slider>
+									
+									<p><strong style="background-color:#FF4060;font-style: normal;color:#111111">Time slider:</strong> 2019 JAN - 2021 DEC</p>
+					<!-- 图例改在这里了！！ -->
+								<img src="images/legend.png"
+									height="10%"
+									position="absolute"
+									top= "80px"
+									left="15%" >	
+								</div>
+								<script>
+									new Vue({
+										el: '#date-slider',
+										data: function() {
+											return  {
+												value2: 0,
+												startYear: 0,
+												startMonth: 0,
+												max: 0
+											}
+										},
+										mounted() {
+											$.ajax({url:"http://127.0.0.1:3000/getDateInterval", success: (result) => {
+												const { start, end } = result.data
+												const startYear = Number(start.split('-')[0])
+												const startMonth = Number(start.split('-')[1])
+												this.startYear = startYear
+												this.startMonth = startMonth
+												const endYear = Number(end.split('-')[0])
+												const endMonth = Number(end.split('-')[1])
+												this.max = (endYear - startYear) * 12 + (endMonth - startMonth)
+			
+												// 加个延时，等地图数据读完
+												setTimeout(() => {
+													mapDraw()
+													this.getData(startYear, startMonth)
+												}, 1000)
+											}});
+										},
+										methods: {
+											tooltipFormatted(val) {
+												return `${this.startYear + Math.floor(val / 12)}-${val % 12 + this.startMonth}`
+											},
+											selfChange(val) {
+												const year = this.startYear + Math.floor(val / 12)
+												const month = val % 12 + this.startMonth;
+												this.getData(year, month)
+											},
+											getData(year, month) {
+												$.ajax({url:`http://127.0.0.1:3000/getNoiseDate?year=${year}&month=${month}`, success: (result) => {
+													handleChangeDate(result.data)
+												}});
+											}
+										},
+									})
+								</script>
+							</div> 
+
+							<div id="tooltip">
+								<p id="Truecomplain"></p>
+								<p id="True"></p>
+								
+								<hr class="rounded"  > 
+								<p class="note" style="margin-top: 50px;">county: <span id="countyname"></span> </p>
+								<p class="note" style="margin-top: 70px;">zipcode: <span id="zipcode"></span></p>
+							</div>
+					    </div>
+						<br />
+						<br />
+						<p style="margin-top: 10px;text-align: justify;width:800px;margin: 0 auto;line-height:25px;letter-spacing:0.5px;">
+							We noticed that not all complaints are recognized as real. Thus, we tweak the data, assuming the complaints in the 311 databases with passive resolution descriptions <em>"False"</em> complaints and the rest are warranted or <em>"True"</em> complaints.<br /><br />
+							From the interactive map, the northern part (composed of Upper Manhattan and southwest Bronx) and central part (composed of northeast Brooklyn) can be recognised as as the noisest areas in New York City.</p>
+						<div class='dividing_line'></div>
+					</section>
+					
+					
+				<!-- PART 2 : DIFFERENCES WITHIN NOISE -->
+					<section id="difference" class="wrapper style1 special" style="padding-top: 80px;">
+						<h2 style="font-size: 30px;letter-spacing:3px;width:800px;margin:0 auto">
+							Part 2 : Differences within noise</h2>
+							<br /><br />
+						<!-- chart2 -->
+						<div class="content" style="color: white;width:800px;margin:0 auto;">
+							<h2 style="text-align:center;font-size: 20px;letter-spacing:3px;">
+								Where does noise usually happen?</h2></div>
+						<div class="image" style="width:800px; height:500px;margin:0 auto;">
+							<div class="image2" id="chart2" style="width:100%; height:100%;"></div></div>
+						<br />
+						<!-- chart2 word-->
+						<div class="content" style="color: white;width:800px;margin:0 auto;">
+							<p style='font-size: 16px;line-height:25px;letter-spacing:0.5px;text-align: justify'>
+								Noise complaints mostly happen in residential buildings in New York! When people stay at their home, they sometimes want to make noises. This trend may get popular because of Covid-19.<br />
+								<br />
+								The No.2 noise complaint happens on the street/sidewalk. Noise on the road is very normal in the mega cities like New York.
+							</p></div><br />
+						<!-- chart3-->
+						<div class="content" style="color: white;width:800px;margin:0 auto;">
+							<h2 style="text-align:center;font-size: 20px;letter-spacing:3px;">
+								What is the most frequent type of noise?</h2></div>
+						<div class="image" style="width:800px; height:500px;margin:0 auto;">
+							<div class="image3" id="chart3" style="width:100%; height:100%;"></div></div>
+						<!-- chart3 word-->
+						<div class="content" style="color: white;width:800px;margin:0 auto;">
+							<p style='font-size: 16px;line-height:25px;letter-spacing:0.5px;text-align: justify'>
+								Loud music/party is the most frequent type of noise complaints. New York's booming music and party culture makes New York have a lot of noisy bars, and many people also hold parties at home or in public green spaces.<br />
+								<br />
+								Banging/Pounding, Construction, Loud Talking and Car/Truck Music have similar numbers of complaints. These are common types of noise in apartments and neighbourhoods.
+							</p></div><br />
+						<!-- chart4-->
+						<div class="content" style="color: white;width:800px;margin:0 auto;">
+							<h2 style="text-align:center;font-size: 20px;letter-spacing:3px;">
+								Which borough has the most noise complaints?</h2></div>
+						<div class="image" style="width:800px; height:400px;margin:0 auto;">
+							<div class="image4" id="chart4" style="width:100%; height:100%;"></div></div>
+						<!-- chart4 word-->
+						<div class="content" style="color: white;width:800px;margin:0 auto;">
+							<p style='font-size: 16px;line-height:25px;letter-spacing:0.5px;text-align: justify'>
+								New York is a crowded city. Noise complaints are frequent in Manhattan, Brooklyn and Bronx, which are densely populated, commercial and heavily traffic-filled areas.<br />
+								<br />
+								Staten Island has the lowest number of noise complaints due to its smaller population and more comfortable living conditions. 
+							</p></div>
+						<div class='dividing_line'></div> 
+					</section>
+
+					<!-- PART 3 : ADVANCED DATA ANALYSIS -->
+					<section id="Advanced" class="wrapper style1 special" >					
+						<!-- Title -->
+						<h2 style="font-size: 30px;letter-spacing:3px;width:800px;margin:0 auto;">
+							Part 3 : Advanced data analysis
+						</h2><br /><br />
+						<!-- MULTIPLE LINEAR REGRESSION Title -->
+						<div class="content" style="color: white;width:800px;margin:0 auto;">
+							<h2 style="text-align:center;font-size: 20px;letter-spacing:3px;">
+								Multiple Linear Regression</h2></div>
+						<!-- Chart5-->
+						<div class="image" style="width:800px; height:400px;margin:0 auto;">
+							<div class="image5" id="chart5" style="width:100%; height:100%;"></div></div>
+						<br />
+						<!-- pic07-->
+						<img src="images/pic07.png" style="width:500px;margin:0 auto;"><br /><br />
+						<!-- MULTIPLE LINEAR REGRESSION Word -->
+						<div class="content" style="color: white;width:800px;margin:0 auto;">
+							<p style='font-size: 16px;line-height:25px;letter-spacing:0.5px;text-align: justify'>
+								According to the correlation matrix, the number of noise complaints is strongly correlated with low income population, rental housing, and total population.<br />
+								<br />
+								Based on that, we make a multiple linear regression. As the table shows, when a district in NYC has higher unemployment rate, more low income population, less the median number of rooms, more noise complaints are likely to happen here.
+							</p></div>
+
+						<!-- K-MEANS CLUSTERING Title -->
+						<div class="content" style="color: white;width:800px;margin:0 auto;margin-top: 80px;">
+							<h2 style="text-align:center;font-size: 20px;letter-spacing:3px;">
+								K-means Clustering</h2></div>
+						<!-- K-MEANS CLUSTERING Map-->
+						<section id="K-means Clustering">
+							<div id="map"></div>
+							<iframe src="map_K-menas_Clustering/clustering.html" width=1200px; height=800px></iframe>
+						</section>
+						<!-- K-MEANS CLUSTERING Word-->
+						<div class="inner">
+							<div class="content" style="text-align:justify; text-justify:inter-ideograph">
+								<header class="major" >
+									<p style="color:white; width:800px; height:200px;margin:0 auto;font-size:16px;line-height:25px;letter-spacing:0.5px">
+										<br />
+										<br />
+										<br />
+										The K-means clustering algorithm can effectively classify noise complaints in New York spatially. A clustering model is constructed by randomly sampling 10,000 rows of data based on the noise location, and the five most complained about types.<br /> 
+										<br />
+										The interactive map shows how the clustering changes when the K value changes. Based on the spatial clustering of noise complaints, New York authorities can rationalise the dispatch of resources to resolve noise complaints efficiently.  <br />
+									</p>
+									<br /><br />
+								</header>
+							</div>
+							</div>
+						<!-- KNN PREDICTION Title -->
+						<div class="content" style="color: white;width:800px;margin:0 auto;">
+							<h2 style="text-align:center;font-size: 20px;letter-spacing:3px;">
+								KNN Prediction</h2></div>
+						<!-- KNN PREDICTION Map-->
+						<section id="KNN">
+							<div id="map1"></div>
+							<iframe src="map_KNN_Prediction/knn_final.html" width=1200px; height=800px></iframe>
+						</section>
+						<!-- KNN PREDICTION Word-->
+						<div class="inner">
+							<div class="content" style="text-align:justify; text-justify:inter-ideograph">
+								<header class="major" >
+									<p style="color:white; width:800px; height:200px;margin:0 auto;font-size:16px;line-height:25px;letter-spacing:0.5px">
+									<br />
+									<br />
+									<br />
+									The K-Nearest Neighbour Classification algorithm can predict the type of noise likely to occur in areas of the city. Observations which are close to each other can identify similar types of noise complaints. In addition, the longitude and latitude in the dataset can make an excellent feature matrix for constructing the model.<br />
+									<br />
+									The model has been fitted to 100% of the training set, so no test set has been included. The performance of the classifier has been evaluated against the training error. When K = 3, the accuracy of the model predictions reached 72%.<br />
+									</p>
+									<br />
+								</header>
+							</div>
+						</div>
+					</section>
+
+                    
+				<!-- CTA -->
+					<section id="cta" class="wrapper style4">
+						<div class="inner" style="margin:0 auto;width:800px;">
+							<header>
+								<h2>An analysis of<br />noise complaints<br />in New York CITY<br />
+								</h2>
+							</header>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="text-white text-center mt-0" style="text-align:center">Data Sources</p>
+							<div class="content" style="text-align:center;font-size: 13px;">
+								<a href="https://data.cityofnewyork.us/Social-Services/311-Noise-Complaints/p5f6-bkga">
+									New York 311 Noise Complaints
+								</a>
+								<br>
+								<a href="https://data.cityofnewyork.us/Business/Zip-Code-Boundaries/i8iw-xf4u">
+									New York Zip Code Boundary Map
+								</a>
+								<br>
+								<a href="https://data.cityofnewyork.us/City-Government/Demographic-Profiles-of-ACS-5-Year-Estimates-at-th/8cwr-7pqn">
+									Demographic Profiles at the NTA level
+								</a>
+								<br>
+								<a href="https://data.cityofnewyork.us/City-Government/2010-Neighborhood-Tabulation-Areas-NTAs-/cpf4-rkhq">
+									2010 Neighbourhood Tabulation Areas</a><br>
+								<br />
+							</div>
+							<p class="text-white text-center mt-0" style="text-align:center"> About Us</p>
+							<div class="small text-center text-white-50" style="text-align:center;font-size: 13px;">
+								   ​Team Metaverse: Jianqiao Li, Jinfeng Gao,<br> ​Liye Zhu, Rongbo Xu, Yufei Tang
+							</div>
+					</footer>
+			</div>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+			<script src="assets/js/chart1.js"></script>
+			<script src="assets/js/chart2.js"></script>
+			<script src="assets/js/chart3.js"></script>
+			<script src="assets/js/chart4.js"></script>
+			<script src="assets/js/chart5.js"></script>
+			
+
+	</body>
+</html>
