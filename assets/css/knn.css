@@ -1,0 +1,62 @@
+
+html, body, #wrapper {
+    width: 100%;
+    height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+#map_knn {
+    position:relative; 
+    width: 100%;
+    height: 100%;
+    margin: 0o;
+  }
+  #knntip {
+    position: absolute;
+    height: 150px;
+    width: 180px;
+    padding: 10px;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    opacity: 0;
+    font-size: 7px;
+    font-weight: 200;
+    z-index: 99999;
+    margin-top:30px;
+}
+.currentFlag {
+background-color: #FF8C1B !important;
+color: #111111;
+z-index: 9999;
+
+} 
+
+.ben{
+  background-color: white;
+  stroke: #595959;
+
+
+}
+
+.circle:hover{
+    cursor: pointer;
+}
+
+#mapboxgl-map{
+  height: 100%;
+  width:100%;
+}
+
+
+/* .mapboxgl-canvas{
+  position:absolute !important;
+} */
+
+.mgl-map {
+  height: 100%;
+  width: 100%;
+}
