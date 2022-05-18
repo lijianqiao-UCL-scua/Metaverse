@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script type="text/javascript" src="js/maptalks.min.js"></script>
+    <script type="text/javascript" src="js/mapbox-gl.js"></script>
+    <script type="text/javascript" src="js/mapboxgl-token.js"></script>
+    <script type="text/javascript" src="js/echarts-gl.min.js"></script>
+</head>
+
+<body style="height: 100%; margin: 0">
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="height:100%;"></div>
+    <script type="text/javascript">
+        // 初始化图表时设置style
+        var myChart = echarts.init(document.getElementById('main'));
+        // 指定图表的配置项和数据
+        mapboxgl.accessToken = mapboxglToken
+        $.getJSON('data_4_2.json', function (data) {
+            {
+                var options = []
+                var hour = []
+                for (var i = 0; i < data.length; i++) {
+
+                    hour.push(i)
+                    options.push({
+                        series: [{
+                            type: 'scatter3D',
+                            data: data[i],
+                            coordinateSystem: 'maptalks3D'
+                        }]
+                    })
+                }
+                var option = {
+                    timeline: {
+                        data: [2,3,10],
+
+                        orient: 'vertical',
+                        left: '90%',
+                        top: '5%',
+                        height: '80%',
+                        width: '8%',
+                        axisType: 'category',
+                        autoPlay: true,
+                        playInterval: 3000,
+                        currentIndex: 0,
+                        inverse: true
+                    },
+                    maptalks3D: {
+                        center: [-74.0060, 40.7128],
+                        zoom: 10,
+                        pitch: 30,
+                        bearing: 30,
+                        urlTemplate: 'http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+                        // altitudeScale: 1,
+                        postEffect: {
+                            enable: true,
+                            FXAA: {
+                                enable: true
+                            }
+                        }
+                    },
+                    visualMap: {
+                        type: 'piecewise',
+                        color: ['#bf444c', '#d88273', '#f6efa6', '#90dcff', '#fdfb76','#808080','#FF4500','#800080','#BDB76B','#7FFFD4'],
+                        min: 0,
+                        max: 1,
+                        pieces: [{
+                            min: 0,
+                            max: 0
+                        }, {
+                            min: 1,
+                            max: 1
+                        }, {
+                            min: 2,
+                            max: 2
+                        }, {
+                            min: 3,
+                            max: 3
+                        }, {
+                            min: 4,
+                            max: 4
+                        }
+                        , {
+                            min: 5,
+                            max: 5
+                        }, {
+                            min: 6,
+                            max: 6
+                        }, {
+                            min: 7,
+                            max: 7
+                        }, {
+                            min: 8,
+                            max: 8
+                        }, {
+                            min: 9,
+                            max: 9
+                        }]
+                    },
+                    legend: {},
+                    series: [{}],
+                    options: options
+                };
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option, true);
+        })
+    </script>
+</body>
+
+</html>
